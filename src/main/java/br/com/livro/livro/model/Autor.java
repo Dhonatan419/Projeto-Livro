@@ -1,13 +1,18 @@
 package br.com.livro.livro.model;
 
-import javax.annotation.Generated;
+import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
+
+
 
 @Entity (name = "autor") 
 public class Autor {
@@ -26,7 +31,10 @@ public class Autor {
 	
 	@NonNull
 	@Size (max = 130)
-	private String dataNascimento ;
+	private Date dataNascimento ;
+	
+	@ManyToMany(mappedBy = "autores")
+	private List<Livro> livros;
 
 	public long getId() {
 		return id;
@@ -52,11 +60,11 @@ public class Autor {
 		this.sobrenomenome = sobrenomenome;
 	}
 
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
