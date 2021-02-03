@@ -15,9 +15,6 @@ import javax.validation.constraints.Size;
 import org.springframework.lang.NonNull;
 
 
-
-
-
 @Entity (name="livro")
 public class Livro {
 
